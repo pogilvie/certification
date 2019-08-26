@@ -1,2 +1,2 @@
 # certification
-Salesforce verification study notes
+Salesforce certification study notes
