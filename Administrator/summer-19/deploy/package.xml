@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+  <types>
+    <name>ContentAsset</name>
+    <members>Humangohomesvg</members>
+  </types>
+  <types>
+    <name>EmailTemplate</name>
+    <members>Sales/General_1567393286781</members>
+  </types>
+  <version>46.0</version>
+</Package>
