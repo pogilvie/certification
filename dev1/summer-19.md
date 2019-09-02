@@ -1,0 +1,8 @@
+- Manipulate complex internet data in Flows without code using Apex-defined data types
+- Make long-running callouts with Continuations.
+    - use the continuation class 
+- Configure your component for different device form factors.
+    - declare which form factor components support
+    - app builder shows components which are appropriate for the page being built (desktop / mobile)
+- Use Lightning Web Components in Visualforce pages.
+- Use platform cache to enhance scratch orgs.
