@@ -1,7 +1,6 @@
 @isTest public class BatchLeadConvertTest {
 
-    @isTest
-    static void sanity() {
+    @isTest static void sanity() {
         Lead l = new Lead(
                 FirstName = 'Bobby',
                 LastName = 'Bobson',
@@ -33,11 +32,21 @@
 
         try {
             Test.stopTest();
-        } catch(DmlException ex) { /* don't fail this test if there were errors in the batch job - we want that */ }
+        } catch(DmlException e) { 
+            /* don't fail this test if there were errors in the batch job - we want that */
+            for (Integer i = 0; i < e.getNumDml(); i++) {
+                // Process exception here
+                System.debug(e.getDmlMessage(i)); 
+            }
+        }
 
         Test.getEventBus().deliver();
 
-        List<BatchLeadConvertErrors__c> errorLogs = [SELECT id, StackTrace__c, Records__c FROM BatchLeadConvertErrors__c];
+        List<BatchLeadConvertErrors__c> errorLogs = [
+            SELECT id, StackTrace__c, Records__c 
+            FROM BatchLeadConvertErrors__c
+        ];
+
         System.assertEquals(1, errorLogs.size(), 'Expected errors converting DoNotConvertLeads');
         System.assert(errorLogs[0].Records__c.contains(errLead.Id), 'Expected "Astro DoNotConvert" Lead to fail to convert');
     }

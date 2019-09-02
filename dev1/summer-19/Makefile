@@ -16,6 +16,9 @@ convert:
 install:
 	sfdx force:mdapi:deploy -d deploy -u $(install) -w 100
 
+clean:
+	rm -rf deploy/*
+
 open:
 	sfdx force:org:open -u $(user)
 
@@ -24,6 +27,12 @@ create:
 
 install-package:
 	sfdx force:package:install -p $(packageid) -u $(user) -w 20 -b 20 -s AllUsers
+
+test:
+	sfdx force:apex:test:run -l RunLocalTests -u $(user) -w 10
+
+tail:
+	sfdx force:apex:log:tail -u $(user)
 
 list:
 	sfdx force:org:list

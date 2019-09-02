@@ -6,6 +6,7 @@
 .sfdx/
 
 .vscode/
+deploy/
 
 # Logs
 logs
