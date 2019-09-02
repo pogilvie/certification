@@ -1,4 +1,4 @@
-public with sharing class BatchLeadConvert implements Database.Batchable<SObject> {
+public with sharing class BatchLeadConvert implements Database.Batchable<SObject>, Database.RaisesPlatformEvents {
 
     private final String CONVERTED_STATUS = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1].MasterLabel;
 
@@ -9,7 +9,7 @@ public with sharing class BatchLeadConvert implements Database.Batchable<SObject
     public void execute(Database.BatchableContext ctx, List<Lead> records) {
 
         List<Database.LeadConvert> leadConverts = new List<Database.LeadConvert>();
-        
+
         for (Lead record:records) {
             Database.LeadConvert lc = new Database.LeadConvert();
             lc.setConvertedStatus(CONVERTED_STATUS);
