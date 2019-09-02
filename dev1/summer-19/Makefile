@@ -4,6 +4,9 @@ devhub = DevHub
 install = summer19
 packageid = 04t4P000002EMv0
 
+push:
+	sfdx force:source:push -u $(user)
+
 pull:
 	sfdx force:source:pull -u $(user)
 

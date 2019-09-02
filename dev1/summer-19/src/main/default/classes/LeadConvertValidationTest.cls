@@ -1,10 +1,8 @@
-@isTest
-private class LeadConvertValidationTest {
+@isTest private class LeadConvertValidationTest {
 
     private static final String CONVERTED_STATUS = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1].MasterLabel;
 
-    @isTest
-    static void validateDoNotConvert(){
+    @isTest static void validateDoNotConvert() {
         Lead l = new Lead(LastName = 'Johnson DoNOTConvert', FirstName = 'John', Company = 'Salesforce');
         insert l;
 
@@ -18,8 +16,7 @@ private class LeadConvertValidationTest {
         System.assert(res.getErrors().size() > 0, 'Expected error converting a lead with DoNotConvert in the last name');
     }
 
-    @isTest
-    static void validateAllowedConvert(){
+    @isTest static void validateAllowedConvert() {
         Lead l = new Lead(LastName = 'Johnson', FirstName = 'John', Company = 'Salesforce');
         insert l;
 

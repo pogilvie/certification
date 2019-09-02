@@ -1,14 +1,16 @@
-public with sharing class BatchLeadConvert implements Database.Batchable<SObject>{
+public with sharing class BatchLeadConvert implements Database.Batchable<SObject> {
 
     private final String CONVERTED_STATUS = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1].MasterLabel;
 
-    public Database.QueryLocator start(Database.BatchableContext ctx){
+    public Database.QueryLocator start(Database.BatchableContext ctx) {
         return Database.getQueryLocator([SELECT Id FROM Lead WHERE ConvertedContactId = null]);
     }
 
-    public void execute(Database.BatchableContext ctx, List<Lead> records){
+    public void execute(Database.BatchableContext ctx, List<Lead> records) {
+
         List<Database.LeadConvert> leadConverts = new List<Database.LeadConvert>();
-        for(Lead record:records){
+        
+        for (Lead record:records) {
             Database.LeadConvert lc = new Database.LeadConvert();
             lc.setConvertedStatus(CONVERTED_STATUS);
             lc.setLeadId(record.Id);
@@ -18,7 +20,7 @@ public with sharing class BatchLeadConvert implements Database.Batchable<SObject
         Database.convertLead(leadConverts, true);
     }
 
-    public void finish(Database.BatchableContext ctx){
+    public void finish(Database.BatchableContext ctx) {
 
     }
 }
