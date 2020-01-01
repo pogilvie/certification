@@ -19,3 +19,6 @@ create:
 
 list:
 	sfdx force:org:list
+
+listso:
+	sfdx force:schema:sobject:list -c all -u $(user) 
