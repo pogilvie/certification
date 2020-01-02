@@ -4,5 +4,12 @@
     "**/bower_components": true,
     "**/.sfdx": true
   },
-  "eslint.nodePath": "/Users/pogilvie/.vscode/extensions/salesforce.salesforcedx-vscode-lwc-47.10.0/node_modules"
+  "eslint.nodePath": "/Users/pogilvie/.vscode/extensions/salesforce.salesforcedx-vscode-lwc-47.10.0/node_modules",
+  "spellright.language": [
+    "en"
+  ],
+  "spellright.documentTypes": [
+    "latex",
+    "plaintext"
+  ]
 }
