@@ -5,6 +5,10 @@
     <members>AccountTeamMember-Account Team Member Layout</members>
   </types>
   <types>
+    <name>LightningComponentBundle</name>
+    <members>myComponent</members>
+  </types>
+  <types>
     <name>CustomField</name>
     <members>AccountTeamMember.Start__c</members>
     <members>Contact.Birthdate</members>
