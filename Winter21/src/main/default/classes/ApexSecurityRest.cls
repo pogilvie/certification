@@ -11,9 +11,9 @@ global with sharing class ApexSecurityRest {
            throw new FunctionalException('Id parameter is required');
         }
 
-        if (Schema.SObjectType.Contact.isAccessible()
-          && Schema.SObjectType.Contact.fields.Name.isAccessible()
-          && Schema.SObjectType.Contact.fields.Top_Secret__c.isAccessible()
+        if (Schema.SObjectType.Contact.isAccessible() &&
+            Schema.SObjectType.Contact.fields.Name.isAccessible() &&
+            Schema.SObjectType.Contact.fields.Top_Secret__c.isAccessible()
         ) {
 
             List<Contact> results = [
@@ -25,10 +25,10 @@ global with sharing class ApexSecurityRest {
             if (!results.isEmpty()) {
                 result = results[0];
                 if (Schema.sObjectType.Contact.fields.Description.isUpdateable()) {
-                    result.Description = result.Account.Name;
+                    result.Description = result?.Account.Name;
                 }
             }
-            
+
         } else {
             throw new SecurityException('You don\'t have access to all contact fields required to use this API');
         }
